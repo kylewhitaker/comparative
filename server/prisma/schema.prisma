@@ -1,0 +1,81 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+model OwidCovidLatest {
+  iso_code                                   String
+  continent                                  String @default("")
+  location                                   String
+  date                                       String
+  total_cases                                Int    @default(0)
+  new_cases                                  Int    @default(0)
+  new_cases_smoothed                         Float  @default(0) @db.Real
+  total_deaths                               Int    @default(0)
+  new_deaths                                 Int    @default(0)
+  new_deaths_smoothed                        Float  @default(0) @db.Real
+  total_cases_per_million                    Float  @default(0) @db.Real
+  new_cases_per_million                      Float  @default(0) @db.Real
+  new_cases_smoothed_per_million             Float  @default(0) @db.Real
+  total_deaths_per_million                   Float  @default(0) @db.Real
+  new_deaths_per_million                     Float  @default(0) @db.Real
+  new_deaths_smoothed_per_million            Float  @default(0) @db.Real
+  reproduction_rate                          Float  @default(0) @db.Real
+  icu_patients                               Int    @default(0)
+  icu_patients_per_million                   Float  @default(0) @db.Real
+  hosp_patients                              Int    @default(0)
+  hosp_patients_per_million                  Float  @default(0) @db.Real
+  weekly_icu_admissions                      Int    @default(0)
+  weekly_icu_admissions_per_million          Float  @default(0) @db.Real
+  weekly_hosp_admissions                     Int    @default(0)
+  weekly_hosp_admissions_per_million         Float  @default(0) @db.Real
+  total_tests                                BigInt @default(0)
+  new_tests                                  BigInt @default(0)
+  total_tests_per_thousand                   Float  @default(0) @db.Real
+  new_tests_per_thousand                     Float  @default(0) @db.Real
+  new_tests_smoothed                         BigInt @default(0)
+  new_tests_smoothed_per_thousand            Float  @default(0) @db.Real
+  positive_rate                              Float  @default(0) @db.Real
+  tests_per_case                             Float  @default(0) @db.Real
+  tests_units                                String @default("")
+  total_vaccinations                         BigInt @default(0)
+  people_vaccinated                          BigInt @default(0)
+  people_fully_vaccinated                    BigInt @default(0)
+  total_boosters                             BigInt @default(0)
+  new_vaccinations                           Int    @default(0)
+  new_vaccinations_smoothed                  Int    @default(0)
+  total_vaccinations_per_hundred             Float  @default(0) @db.Real
+  people_vaccinated_per_hundred              Float  @default(0) @db.Real
+  people_fully_vaccinated_per_hundred        Float  @default(0) @db.Real
+  total_boosters_per_hundred                 Float  @default(0) @db.Real
+  new_vaccinations_smoothed_per_million      Int    @default(0)
+  new_people_vaccinated_smoothed             Int    @default(0)
+  new_people_vaccinated_smoothed_per_hundred Float  @default(0) @db.Real
+  stringency_index                           Float  @default(0) @db.Real
+  population                                 BigInt @default(0)
+  population_density                         Float  @default(0) @db.Real
+  median_age                                 Float  @default(0) @db.Real
+  aged_65_older                              Float  @default(0) @db.Real
+  aged_70_older                              Float  @default(0) @db.Real
+  gdp_per_capita                             Float  @default(0) @db.Real
+  extreme_poverty                            Float  @default(0) @db.Real
+  cardiovasc_death_rate                      Float  @default(0) @db.Real
+  diabetes_prevalence                        Float  @default(0) @db.Real
+  female_smokers                             Float  @default(0) @db.Real
+  male_smokers                               Float  @default(0) @db.Real
+  handwashing_facilities                     Float  @default(0) @db.Real
+  hospital_beds_per_thousand                 Float  @default(0) @db.Real
+  life_expectancy                            Float  @default(0) @db.Real
+  human_development_index                    Float  @default(0) @db.Real
+  excess_mortality_cumulative_absolute       Float  @default(0) @db.Real
+  excess_mortality_cumulative                Float  @default(0) @db.Real
+  excess_mortality                           Float  @default(0) @db.Real
+  excess_mortality_cumulative_per_million    Float  @default(0) @db.Real
+
+  @@unique([iso_code, date], name: "id")
+}
