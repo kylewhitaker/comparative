@@ -1,9 +1,11 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
+import cors from 'cors';
 
 const app = express();
 const prisma = new PrismaClient();
 
+app.use(cors());
 app.use(express.json());
 // @ts-ignore-next-line
 BigInt.prototype.toJSON = function () {
@@ -20,6 +22,7 @@ app.get('/', async (req, res) => {
         },
       },
       select: {
+        iso_code: true,
         location: true,
         date: true,
         new_cases: true,
