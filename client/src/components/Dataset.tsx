@@ -1,10 +1,9 @@
+import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { MultiChart } from '.';
+import { fetchLocation, GetContinents, GetCountries, GetLocation } from '../core';
+import { MultiChart } from './MultiChart';
 import { InputAutocomplete } from './InputAutocomplete';
 import { InputToggleButtons } from './InputToggleButtons';
-import { GetContinents, GetCountries, GetLocation } from '../core/interfaces';
-import { fetchLocation } from '../core/utilities';
 
 interface Props {
   iso_code: string;

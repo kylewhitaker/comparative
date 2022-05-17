@@ -1,8 +1,7 @@
-import { Box } from '@mui/material';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StateContext } from '../core/StateContext';
-import { useQuery } from '../core/useQuery.hook';
+import { Box } from '@mui/material';
+import { StateContext, useQuery } from '../core';
 import { Dataset } from '../components/Dataset';
 
 interface Props {}
